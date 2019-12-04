@@ -23,13 +23,8 @@ def top_k_logits(logits, k):
 
 @app.route("/generate", methods=['POST'])
 def answer():
-    # time.sleep(5000)
-    sentence = ""
     try:
-        # print("data:", request.form['data'], end=" - ")
-
         sentence = ''.join([x for x in request.form['data'] if ord(x) < 256])
-        # print("---------------------------------------")
         sentence_split = sentence.split(" ")
         if "." not in sentence_split[len(sentence_split) - 1] or "!" not in sentence_split[
             len(sentence_split) - 1] or "?" not in sentence_split[len(sentence_split) - 1]:
